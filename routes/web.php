@@ -13,7 +13,12 @@ use App\Http\Middleware\LogAcessoMiddleware;
 |
 */
 
-Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
+Route::get('/', [App\Http\Controllers\Principal::class, 'home'])->name('pagina-incial');//apelido para se mudar a url só chama o apelido
+Route::get('/sobre', [App\Http\Controllers\Sobre::class, 'about'])->name('pagina-sobre');
+//get pega os dados
+// post insere
+// put atualiza
+//delete apaga
 
 
 
