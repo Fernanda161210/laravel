@@ -9,19 +9,15 @@ class AlunoController extends Controller
     function index(){ 
         return view('aluno.index');
     }
-   
-    function adicionar(Request $dados){ 
-      $aluno = new \App\Models\AlunoModel();
-      $aluno::create($dados->all());
-      
 
-      return view('aluno.index',['sucesso'=>'Aluno cadastrado!']);
+    function add(Request $dados) { 
+        $aluno = new \App\Models\AlunoModel();
+        $aluno::create($dados->all());
 
+				//RECUPERANDO TODOS ALUNOS DO BANCO E ENVIANDO PARA A VIEW
+				
+        $alunos = new \App\Models\AlunoModel();
+
+        return view('aluno.index', ['success'=>'Cadastrado!', 'alunos'=>$alunos::all()]);
     }
-
-    function remover(Resquest $dados){ }
-
-    function atualizar(Request $dados){ }
-
-    function consultar(Request $dados){ }
 }
