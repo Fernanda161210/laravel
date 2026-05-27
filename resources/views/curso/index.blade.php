@@ -1,13 +1,16 @@
 <div>
     <form action="{{ route('curso.add') }}" method="post">
         @csrf
-        <label for="nome">Nome:</label>
+        <label for="nome">Nome</label>
         <input type="text" name="nome" id="nome">
-        <label for="periodo">Periodo:</label>
+
+        <label for="periodo">Periodo</label>
         <input type="text" name="periodo" id="periodo">
 
         <button type="submit">Salvar</button>
-        @isset($success)
+    </form>
+
+    @isset($success)
             <h1>{{ $success }}</h1>
         @endisset
     </form>
@@ -15,7 +18,6 @@
     @isset($cursos)
             @foreach($cursos as $curso)
                 <h3>{{ $curso->nome }}</h3>
-                <h3>{{ $curso->periodo }}</h3>
             @endforeach
     @endisset
 </div>
