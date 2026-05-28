@@ -28,4 +28,12 @@ class ComponenteController extends Controller
             'componentes' => $componentes::all()
         ]);
     }
+
+    function remove(string $id) {
+        $componente = new \App\Models\ComponenteModel();
+        $componente::destroy($id);
+
+        return view('componente.index', ['success'=>'Removido!', 'componentes'=>$componente::all()]);
+
+    }
 }
