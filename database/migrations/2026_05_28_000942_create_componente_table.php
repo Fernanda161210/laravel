@@ -8,16 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('curso', function (Blueprint $table) {
+        Schema::create('componente', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('periodo');
+            $table->dateTime('hora_inicio');
+            $table->dateTime('hora_fim');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('curso');
+        Schema::dropIfExists('componente');
     }
 };
