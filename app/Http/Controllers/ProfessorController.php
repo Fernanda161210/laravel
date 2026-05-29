@@ -8,10 +8,10 @@ class ProfessorController extends Controller
 {
     function index()
     {
-        $professores = new \App\Models\ProfessorModel();
+        $professor = new \App\Models\ProfessorModel();
 
         return view('professor.index', [
-            'professores' => $professores::all()
+            'professores' => $professor::all()
         ]);
     }
 
@@ -21,18 +21,46 @@ class ProfessorController extends Controller
 
         $professor::create($dados->all());
 
-        $professores = new \App\Models\ProfessorModel();
-
         return view('professor.index', [
             'success' => 'Cadastrado!',
-            'professores' => $professores::all()
+            'professores' => $professor::all()
         ]);
     }
-    function remove(string $id) {
+
+    function remove(string $id)
+    {
         $professor = new \App\Models\ProfessorModel();
+
         $professor::destroy($id);
 
-        return view('professor.index', ['success'=>'Removido!', 'professores'=>$professor::all()]);
+        return view('professor.index', [
+            'success' => 'Removido!',
+            'professores' => $professor::all()
+        ]);
+    }
 
+    function atualizar(string $id)
+    {
+        $professor = new \App\Models\ProfessorModel();
+
+        $professor = $professor::find($id);
+
+        return view('professor.atualizar', [
+            'professor' => $professor
+        ]);
+    }
+
+    function save(Request $dados)
+    {
+        $professor = new \App\Models\ProfessorModel();
+
+        $professor = $professor::find($dados->id);
+
+        $professor->update($dados->all());
+
+        return view('professor.atualizar', [
+            'success' => 'Atualizado!',
+            'professor' => $professor
+        ]);
     }
 }

@@ -1,75 +1,116 @@
 <div>
+
     <form action="{{ route('administrador.add') }}" method="post">
         @csrf
 
-        <div>
-            <label>Nome</label><br>
-            <input type="text" name="nome">
-        </div>
+        <label>Nome</label><br>
+        <input type="text" name="nome">
 
-        <br>
+        <br><br>
 
-        <div>
-            <label>Email</label><br>
-            <input type="email" name="email">
-        </div>
+        <label>Email</label><br>
+        <input type="email" name="email">
 
-        <br>
+        <br><br>
 
-        <div>
-            <label>Telefone</label><br>
-            <input type="text" name="telefone">
-        </div>
+        <label>Telefone</label><br>
+        <input type="text" name="telefone">
 
-        <br>
+        <br><br>
 
-        <div>
-            <label>CPF</label><br>
-            <input type="text" name="cpf">
-        </div>
+        <label>CPF</label><br>
+        <input type="text" name="cpf">
 
-        <br>
+        <br><br>
 
-        <div>
-            <label>Usuário</label><br>
-            <input type="text" name="usuario">
-        </div>
+        <label>Usuario</label><br>
+        <input type="text" name="usuario">
 
-        <br>
+        <br><br>
 
-        <div>
-            <label>Senha</label><br>
-            <input type="password" name="senha">
-        </div>
+        <label>Senha</label><br>
+        <input type="password" name="senha">
 
-        <br>
+        <br><br>
 
-        <div>
-            <label>Status</label><br>
-            <input type="text" name="status">
-        </div>
+        <label>Status</label><br>
+        <input type="text" name="status">
 
-        <br>
+        <br><br>
 
         <button type="submit">Salvar</button>
 
         @isset($success)
-            <h2>{{ $success }}</h2>
+            <h1>{{ $success }}</h1>
         @endisset
     </form>
 
-    <br>
+    <br><br>
 
-    @isset($administradores)
-        @foreach($administradores as $administrador)
-            <h3>
-                {{ $administrador->nome }} -
-                {{ $administrador->email }} -
-                {{ $administrador->telefone }} -
-                {{ $administrador->cpf }} -
-                {{ $administrador->usuario }} -
-                {{ $administrador->status }}
-            </h3>
-        @endforeach
-    @endisset
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <td>Nome</td>
+            <td>Email</td>
+            <td>Telefone</td>
+            <td>CPF</td>
+            <td>Usuario</td>
+            <td>Status</td>
+            <td colspan="2">Ações</td>
+        </tr>
+
+        @isset($administradores)
+
+            @foreach($administradores as $administrador)
+
+                <tr>
+
+                    <td>
+                        {{ $administrador->nome }}
+                    </td>
+
+                    <td>
+                        {{ $administrador->email }}
+                    </td>
+
+                    <td>
+                        {{ $administrador->telefone }}
+                    </td>
+
+                    <td>
+                        {{ $administrador->cpf }}
+                    </td>
+
+                    <td>
+                        {{ $administrador->usuario }}
+                    </td>
+
+                    <td>
+                        {{ $administrador->status }}
+                    </td>
+
+                    <td>
+                        <form action="{{ route('administrador.remove', ['id' => $administrador->id]) }}" method="GET">
+                            <button type="submit">
+                                Remover
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="{{ route('administrador.atualizar', ['id' => $administrador->id]) }}" method="GET">
+                            <button type="submit">
+                                Atualizar
+                            </button>
+                        </form>
+                    </td>
+
+                </tr>
+
+            @endforeach
+
+        @endisset
+
+    </table>
+
 </div>

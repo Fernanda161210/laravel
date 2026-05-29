@@ -1,12 +1,17 @@
 <div>
+
     <form action="{{ route('curso.add') }}" method="post">
         @csrf
 
-        <label>Nome</label>
-        <input type="text" name="nome">
+        <label for="nome">Nome</label><br>
+        <input type="text" name="nome" id="nome">
 
-        <label>Periodo</label>
-        <input type="text" name="periodo">
+        <br><br>
+
+        <label for="periodo">Periodo</label><br>
+        <input type="text" name="periodo" id="periodo">
+
+        <br><br>
 
         <button type="submit">Salvar</button>
 
@@ -14,59 +19,53 @@
             <h1>{{ $success }}</h1>
         @endisset
     </form>
-     <table border="1">
+
+    <br><br>
+
+    <table border="1" cellpadding="10">
+
         <tr>
-            <td>Nome do Curso</td>
+            <td>Nome</td>
+            <td>Periodo</td>
             <td colspan="2">Ações</td>
         </tr>
+
         @isset($cursos)
-                @foreach($cursos as $curso)
-                    <tr>
-                        <td>
-                            <h3>{{ $curso->nome}}</h3>
-                        </td>
-                        <td>
+
+            @foreach($cursos as $curso)
+
+                <tr>
+
+                    <td>
+                        {{ $curso->nome }}
+                    </td>
+
+                    <td>
+                        {{ $curso->periodo }}
+                    </td>
+
+                    <td>
                         <form action="{{ route('curso.remove', ['id' => $curso->id]) }}" method="GET">
-                                <button type="submit">Remover</button>
-                            </form>
-                        
-                        </td>
-                        <td>
-                            <button type="submit">Atualizar</button>
-                        </td>
-                    </tr>
-                @endforeach
+                            <button type="submit">
+                                Remover
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="{{ route('curso.atualizar', ['id' => $curso->id]) }}" method="GET">
+                            <button type="submit">
+                                Atualizar
+                            </button>
+                        </form>
+                    </td>
+
+                </tr>
+
+            @endforeach
+
         @endisset
+
     </table>
 
-    <table border="1">
-        <tr>
-            <td>Periodo do Curso</td>
-            <td colspan="2">Ações</td>
-        </tr>
-        @isset($cursos)
-                @foreach($cursos as $curso)
-                    <tr>
-                        <td>
-                            <h3>{{ $curso->periodo}}</h3>
-                        </td>
-                        <td>
-                        <form action="{{ route('curso.remove', ['id' => $curso->id]) }}" method="GET">
-                                <button type="submit">Remover</button>
-                            </form>
-                        
-                        </td>
-                        <td>
-                            <button type="submit">Atualizar</button>
-                        </td>
-                    </tr>
-                @endforeach
-        @endisset
-    </table>
-
-    @isset($cursos)
-        @foreach($cursos as $curso)
-            <h3>{{ $curso->nome }} - {{ $curso->periodo }}</h3>
-        @endforeach
-    @endisset
 </div>

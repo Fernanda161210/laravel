@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
-
     function index(){ 
         $aluno = new \App\Models\AlunoModel();
 
@@ -14,6 +13,13 @@ class AlunoController extends Controller
     }
 
     function add(Request $dados) { 
+        //VALIDAÇÃO DOS DADOS
+        //mínimo 3 caracteres para o nome e é required (obrigatório)
+        $dados->validate([
+            'nome' => 'required|min:3'
+        ]);
+
+
         $aluno = new \App\Models\AlunoModel();
         $aluno::create($dados->all());
 
@@ -43,6 +49,6 @@ class AlunoController extends Controller
         $aluno = $aluno::find($dados->id);
         $aluno->update($dados->all());
 
-        return view('aluno.atualizar', ['success'=>'Atualizado!', 'aluno'=>$aluno]);
+        return view('aluno.index', ['success'=>'Atualizado!', 'alunos'=>$aluno::all()]);
     }
 }
