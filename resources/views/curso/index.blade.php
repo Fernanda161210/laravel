@@ -3,8 +3,8 @@
     <form action="{{ route('curso.add') }}" method="post">
         @csrf
 
-        <label for="nome">Nome</label><br>
-        <input type="text" name="nome" id="nome">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="nome" value="{{ old('nome') }}">
 
         <br><br>
 
@@ -14,10 +14,16 @@
         <br><br>
 
         <button type="submit">Salvar</button>
-
         @isset($success)
             <h1>{{ $success }}</h1>
         @endisset
+        @if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
     </form>
 
     <br><br>

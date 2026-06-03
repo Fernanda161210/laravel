@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AdministradorController extends Controller
 {
@@ -17,6 +18,62 @@ class AdministradorController extends Controller
 
     function add(Request $dados)
     {
+        $validator = Validator::make(
+            $dados->all(),
+              [
+                  'nome' => 'required|min:3|max:255',
+                  'email' => 'required|min:3|max:255',
+                  'telefone' => 'required|min:3|max:255',
+                  'cpf' => 'required|min:3|max:255',
+                  'usuario' => 'required|min:3|max:255',
+                  'senha' => 'required|min:3|max:255',
+                  'status' => 'required|min:3|max:255',
+              ],
+              [
+                  'nome.required' => 'O campo nome é obrigatório.',
+                  'nome.min' => 'O campo nome deve conter no mínimo 3 caracteres.',
+                  'nome.max' => 'O campo nome deve conter no máximo 255 caracteres.',
+
+                  'email.required' => 'O campo email é obrigatório.',
+                  'email.min' => 'O campo email deve conter no mínimo 3 caracteres.',
+                  'email.max' => 'O campo email deve conter no máximo 255 caracteres.',
+
+
+                  'telefone.required' => 'O campo telefone é obrigatório.',
+                  'telefone.min' => 'O campo telefone deve conter no mínimo 3 caracteres.',
+                  'telefone.max' => 'O campo telefone deve conter no máximo 255 caracteres.',
+
+
+                  'cpf.required' => 'O campo cpf é obrigatório.',
+                  'cpf.min' => 'O campo cpf deve conter no mínimo 3 caracteres.',
+                  'cpf.max' => 'O campo cpf deve conter no máximo 255 caracteres.',
+
+                  
+                  'usuario.required' => 'O campo usuario é obrigatório.',
+                  'usuario.min' => 'O campo usuario deve conter no mínimo 3 caracteres.',
+                  'usuario.max' => 'O campo usuario deve conter no máximo 255 caracteres.',
+
+                  
+                  'senha.required' => 'O campo senha é obrigatório.',
+                  'senha.min' => 'O campo senha deve conter no mínimo 3 caracteres.',
+                  'senha.max' => 'O campo senha deve conter no máximo 255 caracteres.',
+
+                  
+                  'status.required' => 'O campo status é obrigatório.',
+                  'status.min' => 'O campo status deve conter no mínimo 3 caracteres.',
+                  'status.max' => 'O campo status deve conter no máximo 255 caracteres.',
+              ],
+    
+              
+            
+      );
+    
+      if ($validator->fails()) {
+          return redirect()
+              ->route('administrador.index')
+              ->withErrors($validator)
+              ->withInput();
+      }
         $administrador = new \App\Models\AdministradorModel();
 
         $administrador::create($dados->all());

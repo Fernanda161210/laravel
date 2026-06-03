@@ -4,7 +4,7 @@
         @csrf
 
         <label>Nome</label><br>
-        <input type="text" name="nome">
+        <input type="text" name="nome" id="nome" value="{{ old('nome') }}">
 
         <br><br>
 
@@ -20,9 +20,13 @@
 
         <button type="submit">Salvar</button>
 
-        @isset($success)
-            <h1>{{ $success }}</h1>
-        @endisset
+        @if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
     </form>
 
     <br><br>
