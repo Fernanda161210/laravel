@@ -8,15 +8,17 @@
 
         <br><br>
 
-        <label for="periodo">Periodo</label><br>
-        <input type="text" name="periodo" id="periodo">
+        <label for="periodo">Período</label><br>
+        <input type="text" name="periodo" id="periodo" value="{{ old('periodo') }}">
 
         <br><br>
 
         <button type="submit">Salvar</button>
+
         @isset($success)
             <h1>{{ $success }}</h1>
         @endisset
+
         @if($errors->any())
             <ul>
                 @foreach($errors->all() as $error)
@@ -24,6 +26,7 @@
                 @endforeach
             </ul>
         @endif
+
     </form>
 
     <br><br>
@@ -32,7 +35,7 @@
 
         <tr>
             <td>Nome</td>
-            <td>Periodo</td>
+            <td>Período</td>
             <td colspan="2">Ações</td>
         </tr>
 

@@ -9,22 +9,22 @@
         <br><br>
 
         <label>Email</label><br>
-        <input type="email" name="email">
+        <input type="email" name="email" value="{{ old('email') }}">
 
         <br><br>
 
         <label>Telefone</label><br>
-        <input type="text" name="telefone">
+        <input type="text" name="telefone" value="{{ old('telefone') }}">
 
         <br><br>
 
         <label>CPF</label><br>
-        <input type="text" name="cpf">
+        <input type="text" name="cpf" value="{{ old('cpf') }}">
 
         <br><br>
 
-        <label>Usuario</label><br>
-        <input type="text" name="usuario">
+        <label>Usuário</label><br>
+        <input type="text" name="usuario" value="{{ old('usuario') }}">
 
         <br><br>
 
@@ -34,7 +34,7 @@
         <br><br>
 
         <label>Status</label><br>
-        <input type="text" name="status">
+        <input type="text" name="status" value="{{ old('status') }}">
 
         <br><br>
 
@@ -43,6 +43,7 @@
         @isset($success)
             <h1>{{ $success }}</h1>
         @endisset
+
         @if($errors->any())
             <ul>
                 @foreach($errors->all() as $error)
@@ -50,6 +51,7 @@
                 @endforeach
             </ul>
         @endif
+
     </form>
 
     <br><br>
@@ -61,7 +63,7 @@
             <td>Email</td>
             <td>Telefone</td>
             <td>CPF</td>
-            <td>Usuario</td>
+            <td>Usuário</td>
             <td>Status</td>
             <td colspan="2">Ações</td>
         </tr>
@@ -72,43 +74,27 @@
 
                 <tr>
 
-                    <td>
-                        {{ $administrador->nome }}
-                    </td>
+                    <td>{{ $administrador->nome }}</td>
 
-                    <td>
-                        {{ $administrador->email }}
-                    </td>
+                    <td>{{ $administrador->email }}</td>
 
-                    <td>
-                        {{ $administrador->telefone }}
-                    </td>
+                    <td>{{ $administrador->telefone }}</td>
 
-                    <td>
-                        {{ $administrador->cpf }}
-                    </td>
+                    <td>{{ $administrador->cpf }}</td>
 
-                    <td>
-                        {{ $administrador->usuario }}
-                    </td>
+                    <td>{{ $administrador->usuario }}</td>
 
-                    <td>
-                        {{ $administrador->status }}
-                    </td>
+                    <td>{{ $administrador->status }}</td>
 
                     <td>
                         <form action="{{ route('administrador.remove', ['id' => $administrador->id]) }}" method="GET">
-                            <button type="submit">
-                                Remover
-                            </button>
+                            <button type="submit">Remover</button>
                         </form>
                     </td>
 
                     <td>
                         <form action="{{ route('administrador.atualizar', ['id' => $administrador->id]) }}" method="GET">
-                            <button type="submit">
-                                Atualizar
-                            </button>
+                            <button type="submit">Atualizar</button>
                         </form>
                     </td>
 

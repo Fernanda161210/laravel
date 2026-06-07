@@ -6,24 +6,24 @@
         <label>Nome</label><br>
         <input type="text" name="nome" id="nome" value="{{ old('nome') }}">
 
-
-
         <br><br>
 
         <label>Hora Inicio</label><br>
-        <input type="datetime-local" name="hora_inicio">
+        <input type="datetime-local" name="hora_inicio" value="{{ old('hora_inicio') }}">
 
         <br><br>
 
         <label>Hora Fim</label><br>
-        <input type="datetime-local" name="hora_fim">
+        <input type="datetime-local" name="hora_fim" value="{{ old('hora_fim') }}">
 
         <br><br>
 
         <button type="submit">Salvar</button>
+
         @isset($success)
             <h1>{{ $success }}</h1>
         @endisset
+
         @if($errors->any())
             <ul>
                 @foreach($errors->all() as $error)
@@ -31,6 +31,7 @@
                 @endforeach
             </ul>
         @endif
+
     </form>
 
     <br><br>
@@ -77,6 +78,7 @@
                             </button>
                         </form>
                     </td>
+
                 </tr>
 
             @endforeach

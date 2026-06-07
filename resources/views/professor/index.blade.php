@@ -9,16 +9,20 @@
         <br><br>
 
         <label>Email</label><br>
-        <input type="email" name="email">
+        <input type="email" name="email" value="{{ old('email') }}">
 
         <br><br>
 
         <label>Telefone</label><br>
-        <input type="text" name="telefone">
+        <input type="text" name="telefone" value="{{ old('telefone') }}">
 
         <br><br>
 
         <button type="submit">Salvar</button>
+
+        @isset($success)
+            <h1>{{ $success }}</h1>
+        @endisset
 
         @if($errors->any())
             <ul>
@@ -27,6 +31,7 @@
                 @endforeach
             </ul>
         @endif
+
     </form>
 
     <br><br>
