@@ -1,29 +1,50 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\LogAcessoMiddleware;
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\Principal;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
-Route::get('/', [App\Http\Controllers\Principal::class, 'principal']);
+// Página principal
+Route::get('/', [Principal::class, 'principal'])->name('principal');
 
-Route::prefix('/aluno')->group(function(){
-    Route::get('/index', [App\Http\Controllers\AlunoController::class, 'index'])->name('aluno.index');
-    Route::post('/adicionar', [App\Http\Controllers\AlunoController::class, 'adicionar'])->name('aluno.adicionar');
-    Route::post('/remover', [App\Http\Controllers\AlunoController::class, 'remover'])->name('aluno.remover');
-    Route::post('/atualizar', [App\Http\Controllers\AlunoCon::class, 'atualizar'])->name('aluno.atualizar');
-    Route::get('/consultar', [App\Http\Controllers\AlunoController::class, 'consultar'])->name('aluno.consultar');
+// Grupo de rotas do site
+Route::prefix('site')->group(function () {
+
+    Route::get('/home', [SiteController::class, 'index'])
+        ->name('site.index');
+
+    Route::get('/cadastro', [SiteController::class, 'cadastro'])
+        ->name('site.cadastro');
+
+    Route::get('/dashboard', [SiteController::class, 'dashboard'])
+        ->name('site.dashboard');
+
+    Route::get('/login', [SiteController::class, 'login'])
+        ->name('site.login');
+
+    Route::get('/lumi', [SiteController::class, 'lumi'])
+        ->name('site.lumi');
+
+    Route::get('/profile', [SiteController::class, 'profile'])
+        ->name('site.profile');
+
+    Route::get('/racemind', [SiteController::class, 'racemind'])
+        ->name('site.racemind');
+
+    Route::get('/shop', [SiteController::class, 'shop'])
+        ->name('site.shop');
+
+    Route::get('/worlds', [SiteController::class, 'worlds'])
+        ->name('site.worlds');
+
+    // Atualizar perfil
+    Route::post('/profile/update', [SiteController::class, 'updateProfile'])
+        ->name('site.profile.update');
+
 });
-//grupo de rotas
-
-
-
-
