@@ -2,11 +2,9 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>SyntheraFlow - My Classes</title>
+<title>SyntheraFlow - Worlds</title>
 
 <style>
 
@@ -24,33 +22,28 @@ overflow-x:hidden;
 }
 
 /* BACKGROUND */
-
-.bg1{
-position:fixed;
-width:500px;
-height:500px;
-background:#9b5cff22;
-border-radius:50%;
-filter:blur(120px);
-top:-100px;
-right:-100px;
-z-index:-1;
-}
-
-.bg2{
+.bg1,.bg2{
 position:fixed;
 width:400px;
 height:400px;
-background:#00d4ff22;
 border-radius:50%;
 filter:blur(120px);
-bottom:-100px;
-left:-100px;
 z-index:-1;
 }
 
-/* HEADER */
+.bg1{
+background:#9b5cff22;
+top:-100px;
+right:-100px;
+}
 
+.bg2{
+background:#00d4ff22;
+bottom:-100px;
+left:-100px;
+}
+
+/* HEADER */
 header{
 display:flex;
 justify-content:space-between;
@@ -61,23 +54,17 @@ background:#070711cc;
 backdrop-filter:blur(10px);
 position:sticky;
 top:0;
-z-index:100;
 }
 
 .logo{
 font-size:35px;
-font-weight:bold;
 color:#9b5cff;
-}
-
-nav{
-display:flex;
-gap:30px;
-flex-wrap:wrap;
+font-weight:bold;
 }
 
 nav a{
 color:white;
+margin-left:20px;
 text-decoration:none;
 transition:0.3s;
 }
@@ -86,97 +73,70 @@ nav a:hover{
 color:#9b5cff;
 }
 
-/* MAIN */
-
-section{
-padding:60px;
-}
-
+/* TITLE */
 .title{
-font-size:55px;
-margin-bottom:40px;
 text-align:center;
+font-size:55px;
+margin:50px 0;
 }
 
 /* GRID */
-
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+padding:0 50px 80px;
 }
 
+/* CARD */
 .card{
 background:#111122;
 padding:30px;
-border-radius:30px;
+border-radius:25px;
 border:1px solid #222;
-transition:0.4s;
+transition:0.3s;
+text-decoration:none;
+color:white;
+position:relative;
 }
 
 .card:hover{
-transform:translateY(-8px);
+transform:translateY(-10px);
 border:1px solid #9b5cff;
 box-shadow:0 0 30px #9b5cff33;
 }
 
 .card h3{
-font-size:28px;
-margin-bottom:20px;
+font-size:26px;
+margin-bottom:10px;
 }
 
 .card p{
 color:#ccc;
-margin-top:10px;
 }
 
-/* BUTTON */
-
-button{
-padding:15px 25px;
-border:none;
-border-radius:15px;
-background:linear-gradient(90deg,#9b5cff,#00d4ff);
-color:white;
-cursor:pointer;
-font-weight:bold;
-margin-top:20px;
-transition:0.3s;
+/* 🔒 BLOQUEADO */
+.locked{
+opacity:0.5;
+cursor:not-allowed;
+filter:grayscale(1);
 }
 
-button:hover{
-transform:translateY(-3px);
-box-shadow:0 0 20px #9b5cff66;
-}
-
-/* FOOTER */
-
-footer{
-padding:40px;
-text-align:center;
-border-top:1px solid #222;
-color:#888;
-margin-top:50px;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-header{
-padding:20px;
-flex-direction:column;
-gap:20px;
-}
-
-section{
-padding:30px;
-}
-
-.title{
+.lock-icon{
 font-size:40px;
+margin-bottom:10px;
 }
 
+/* OVERLAY BLOQUEIO */
+.lock-text{
+position:absolute;
+top:15px;
+right:15px;
+background:#000000aa;
+padding:6px 10px;
+border-radius:10px;
+font-size:12px;
+color:#ffcc00;
 }
 
 </style>
@@ -190,71 +150,44 @@ font-size:40px;
 
 <header>
 
-<div class="logo">
-SyntheraFlow
-</div>
+<div class="logo">SyntheraFlow</div>
 
 <nav>
 <a href="{{ route('site.index') }}">Home</a>
 <a href="{{ route('site.profile') }}">Profile</a>
-<a href="{{ route('site.dashboard') }}">Dashboard</a>
-<a href="{{ route('site.worlds') }}">Classes</a>
-<a href="{{ route('site.racemind') }}">RaceMind</a>
+<a href="{{ route('site.worlds') }}">Worlds</a>
 <a href="{{ route('site.lumi') }}">Lumi</a>
-<a href="{{ route('site.shop') }}">Shop</a>
 </nav>
 
 </header>
 
-<section>
-
-<h1 class="title">
-My Classes 🎓
-</h1>
+<h1 class="title">🌍 Choose Your World</h1>
 
 <div class="grid">
 
-<div class="card">
-<h3>📐 Mathematics</h3>
-<p>Teacher: Ana Silva</p>
-<p>Students: 32</p>
-<p>Progress: 78%</p>
-<button>Enter Class</button>
+<!-- ⚔️ HISTORY (LIBERADO) -->
+<a href="{{ route('site.worlds.history') }}" class="card">
+<h3>⚔️ History Empire</h3>
+<p>Medieval kingdoms, wars and legends</p>
+</a>
+
+<!-- 📐 MATEMÁTICA (BLOQUEADO) -->
+<div class="card locked">
+<div class="lock-text">🔒 Unlock at Level 9 - Veteran</div>
+<div class="lock-icon">🔒</div>
+<h3>📐 Math Kingdom</h3>
+<p>Puzzles and logic challenges</p>
 </div>
 
-<div class="card">
-<h3>🧪 Chemistry</h3>
-<p>Teacher: Carlos Souza</p>
-<p>Students: 28</p>
-<p>Progress: 65%</p>
-<button>Enter Class</button>
-</div>
-
-<div class="card">
-<h3>🌎 Geography</h3>
-<p>Teacher: Mariana Costa</p>
-<p>Students: 30</p>
-<p>Progress: 82%</p>
-<button>Enter Class</button>
-</div>
-
-<div class="card">
-<h3>📚 Portuguese</h3>
-<p>Teacher: Fernanda Lima</p>
-<p>Students: 35</p>
-<p>Progress: 91%</p>
-<button>Enter Class</button>
+<!-- 🧪 CIÊNCIA (BLOQUEADO) -->
+<div class="card locked">
+<div class="lock-text">🔒 Unlock at Level 9 - Veteran</div>
+<div class="lock-icon">🔒</div>
+<h3>🧪 Science Galaxy</h3>
+<p>Space, experiments and discoveries</p>
 </div>
 
 </div>
-
-</section>
-
-<footer>
-
-© 2026 SyntheraFlow • Learn. Grow. Thrive 🚀
-
-</footer>
 
 </body>
 </html>

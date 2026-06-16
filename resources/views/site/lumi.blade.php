@@ -246,11 +246,9 @@ SyntheraFlow
 <nav>
 <a href="{{ route('site.index') }}">Home</a>
 <a href="{{ route('site.profile') }}">Profile</a>
-<a href="{{ route('site.dashboard') }}">Dashboard</a>
 <a href="{{ route('site.worlds') }}">Worlds</a>
-<a href="{{ route('site.racemind') }}">RaceMind</a>
 <a href="{{ route('site.lumi') }}">Lumi</a>
-<a href="{{ route('site.shop') }}">Shop</a>
+
 </nav>
 
 </header>

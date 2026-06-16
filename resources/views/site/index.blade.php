@@ -329,11 +329,9 @@ SyntheraFlow
 <nav>
     <a href="{{ route('site.index') }}">Home</a>
     <a href="{{ route('site.profile') }}">Profile</a>
-    <a href="{{ route('site.dashboard') }}">Dashboard</a>
     <a href="{{ route('site.worlds') }}">Worlds</a>
-    <a href="{{ route('site.racemind') }}">RaceMind</a>
     <a href="{{ route('site.lumi') }}">Lumi</a>
-    <a href="{{ route('site.shop') }}">Shop</a>
+
 </nav>
 
 <div class="buttons">
@@ -364,13 +362,11 @@ SyntheraFlow transforms studying into an immersive adventure with AI companions,
 
 <div class="hero-buttons">
 
-<button class="signup">
+<button class="signup" onclick="window.location='{{ route('site.login') }}'">
 Enter The Universe
 </button>
 
-<button class="login">
-Watch Trailer
-</button>
+
 
 </div>
 
@@ -390,10 +386,7 @@ Why SyntheraFlow? 🌌
 
 <div class="grid">
 
-<div class="card">
-<h3>🏎️ RaceMind</h3>
-<p>Race against other players while answering questions and unlocking powerful boosts.</p>
-</div>
+
 
 <div class="card">
 <h3>🤖 Lumi AI</h3>

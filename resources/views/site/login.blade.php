@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +7,7 @@
 <title>SyntheraFlow - Login</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -20,8 +22,30 @@ justify-content:center;
 align-items:center;
 height:100vh;
 color:white;
+position:relative;
 }
 
+/* 🔙 BOTÃO VOLTAR */
+.back-home{
+position:absolute;
+top:20px;
+left:20px;
+text-decoration:none;
+font-size:16px;
+color:#9b5cff;
+padding:10px 14px;
+border:1px solid #9b5cff33;
+border-radius:12px;
+background:#111122;
+transition:0.3s;
+}
+
+.back-home:hover{
+transform:translateX(-3px);
+background:#1a1a2e;
+}
+
+/* CARD */
 .card{
 width:420px;
 padding:40px;
@@ -58,16 +82,36 @@ background:linear-gradient(90deg,#9b5cff,#00d4ff);
 color:white;
 font-weight:bold;
 cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:translateY(-3px);
 }
 
 a{
 color:#9b5cff;
 text-decoration:none;
 }
+
+.erro{
+background:#ff4d4d20;
+border:1px solid #ff4d4d;
+padding:12px;
+border-radius:10px;
+margin-bottom:15px;
+}
+
 </style>
+
 </head>
 
 <body>
+
+<!-- 🔙 VOLTAR PARA HOME -->
+<a href="{{ route('site.index') }}" class="back-home">
+ ➟ Home
+</a>
 
 <div class="card">
 
@@ -77,13 +121,24 @@ SyntheraFlow
 
 <h2>Welcome Back 👋</h2>
 
-<form>
-<input type="email" placeholder="Email">
-<input type="password" placeholder="Password">
+@if(session('erro'))
+<div class="erro">
+{{ session('erro') }}
+</div>
+@endif
 
-<button>
+<form method="POST" action="{{ route('site.fazerLogin') }}">
+
+@csrf
+
+<input type="email" name="email" placeholder="Email" required>
+
+<input type="password" name="senha" placeholder="Password" required>
+
+<button type="submit">
 Login
 </button>
+
 </form>
 
 <p style="margin-top:20px;text-align:center;">
