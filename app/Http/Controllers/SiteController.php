@@ -28,10 +28,7 @@ class SiteController extends Controller
         return view('site.lumi');
     }
 
-    public function racemind()
-    {
-        return view('site.racemind');
-    }
+    
 
     public function worlds()
     {
@@ -48,32 +45,18 @@ class SiteController extends Controller
         return view('site.worlds.history');
     }
 
-    // 📐 MATEMÁTICA (BLOQUEADO NÍVEL 9+)
+    
     public function math()
     {
-        $nivel = session('nivel', 1);
+        return view('site.worlds.math');
 
-        if ($nivel < 9) {
-            return redirect()
-                ->route('site.worlds')
-                ->with('erro', '🔒 Mundo bloqueado! Alcance nível 9 (Veterano) para liberar Matemática.');
-        }
-
-        return view('site.bloqueado');
+        
     }
 
-    // 🧪 CIÊNCIA (BLOQUEADO NÍVEL 9+)
+   
     public function science()
     {
-        $nivel = session('nivel', 1);
-
-        if ($nivel < 9) {
-            return redirect()
-                ->route('site.worlds')
-                ->with('erro', '🔒 Mundo bloqueado! Alcance nível 12 (Veterano) para liberar Ciência.');
-        }
-
-        return view('site.bloqueado');
+        return view('site.worlds.science');
     }
 
     /* =========================

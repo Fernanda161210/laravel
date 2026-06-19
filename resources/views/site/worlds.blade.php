@@ -172,20 +172,15 @@ color:#ffcc00;
 </a>
 
 <!-- 📐 MATEMÁTICA (BLOQUEADO) -->
-<div class="card locked">
-<div class="lock-text">🔒 Unlock at Level 9 - Veteran</div>
-<div class="lock-icon">🔒</div>
-<h3>📐 Math Kingdom</h3>
+<a href="{{ route('site.worlds.math') }}" class="card">
+<h3>📐 Math Kingdome</h3>
 <p>Puzzles and logic challenges</p>
-</div>
+</a>
 
-<!-- 🧪 CIÊNCIA (BLOQUEADO) -->
-<div class="card locked">
-<div class="lock-text">🔒 Unlock at Level 9 - Veteran</div>
-<div class="lock-icon">🔒</div>
-<h3>🧪 Science Galaxy</h3>
+<a href="{{ route('site.worlds.science') }}" class="card">
+<h3>Science Galaxy</h3>
 <p>Space, experiments and discoveries</p>
-</div>
+</a>
 
 </div>
 

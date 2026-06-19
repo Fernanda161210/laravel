@@ -58,16 +58,15 @@ Route::prefix('site')->group(function () {
         WORLDS (JOGOS)
     ======================== */
 
-    // ⚔️ HISTÓRIA (LIBERADO)
+ 
     Route::get('/worlds/history', [SiteController::class, 'history'])
         ->name('site.worlds.history');
 
-    // 📐 MATEMÁTICA (BLOQUEADO NIVEL 9+)
-    Route::get('/worlds/math', [SiteController::class, 'math'])
-        ->name('site.bloqueado');
-
-    // 🧪 CIÊNCIA (BLOQUEADO NIVEL 9+)
+    
+        Route::get('/worlds/math', [SiteController::class, 'math'])
+        ->name('site.worlds.math');
+    
     Route::get('/worlds/science', [SiteController::class, 'science'])
-        ->name('site.bloqueado');
+        ->name('site.worlds.science');
 
 });
