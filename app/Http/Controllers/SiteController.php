@@ -28,40 +28,25 @@ class SiteController extends Controller
         return view('site.lumi');
     }
 
-    
-
     public function worlds()
     {
         return view('site.worlds');
     }
 
-    /* =========================
-        WORLDS INDIVIDUAIS
-    ========================== */
-
-    // ⚔️ HISTÓRIA (LIBERADO)
     public function history()
     {
         return view('site.worlds.history');
     }
 
-    
     public function math()
     {
         return view('site.worlds.math');
-
-        
     }
 
-   
     public function science()
     {
         return view('site.worlds.science');
     }
-
-    /* =========================
-        PROFILE
-    ========================== */
 
     public function profile()
     {
@@ -77,9 +62,7 @@ class SiteController extends Controller
         if ($request->hasFile('avatar')) {
 
             $arquivo = $request->file('avatar');
-
             $nomeArquivo = time() . '.' . $arquivo->getClientOriginalExtension();
-
             $arquivo->move(public_path('avatars'), $nomeArquivo);
 
             session(['avatar' => $nomeArquivo]);
@@ -92,17 +75,15 @@ class SiteController extends Controller
             'descricao' => $request->descricao
         ]);
 
-        return redirect()
-            ->back()
-            ->with('success', 'Perfil atualizado com sucesso!');
+        return redirect()->back()->with('success', 'Perfil atualizado com sucesso!');
     }
-
-    /* =========================
-        CADASTRO
-    ========================== */
 
     public function salvarCadastro(Request $request)
     {
+        if (Usuario::where('email', $request->email)->exists()) {
+            return redirect()->back()->with('erro', 'Este email já está cadastrado.');
+        }
+
         $usuario = Usuario::create([
             'nome' => $request->nome,
             'email' => $request->email,
@@ -112,37 +93,32 @@ class SiteController extends Controller
         session([
             'usuario_id' => $usuario->id,
             'usuario_nome' => $usuario->nome,
-            'nivel' => 1 // 👈 começa nível 1
+            'nivel' => 1
         ]);
 
         return redirect()->route('site.profile');
     }
 
-    /* =========================
-        LOGIN
-    ========================== */
-
     public function fazerLogin(Request $request)
     {
         $usuario = Usuario::where('email', $request->email)->first();
 
-        if ($usuario && Hash::check($request->senha, $usuario->senha)) {
-
-            session([
-                'usuario_id' => $usuario->id,
-                'usuario_nome' => $usuario->nome,
-                'nivel' => 1 // ou puxar do banco depois
-            ]);
-
-            return redirect()->route('site.profile');
+        if (!$usuario) {
+            return redirect()->back()->with('erro', 'Usuário não encontrado.');
         }
 
-        return redirect()->back()->with('erro', 'Email ou senha inválidos.');
-    }
+        if (!Hash::check($request->senha, $usuario->senha)) {
+            return redirect()->back()->with('erro', 'Senha incorreta.');
+        }
 
-    /* =========================
-        LOGOUT
-    ========================== */
+        session([
+            'usuario_id' => $usuario->id,
+            'usuario_nome' => $usuario->nome,
+            'nivel' => 1
+        ]);
+
+        return redirect()->route('site.profile');
+    }
 
     public function logout()
     {
