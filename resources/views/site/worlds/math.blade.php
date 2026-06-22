@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Math Galaxy</title>
+
 <link rel="stylesheet" href="{{ asset('css/math.css') }}">
-<script src="{{ asset('js/math.js') }}"></script>
+<script src="{{ asset('js/math.js') }}" defer></script>
 </head>
 
 <body>
@@ -20,7 +21,6 @@ SyntheraFlow
     <a href="{{ route('site.profile') }}">Profile</a>
     <a href="{{ route('site.worlds') }}">Worlds</a>
     <a href="{{ route('site.lumi') }}">Lumi</a>
-
 </nav>
 
 <div class="buttons">
@@ -35,7 +35,7 @@ SyntheraFlow
 </header>
 
 <section>
-<h1 class="title">📘 Math Galaxy</h1>
+<h1 class="title">𝞹 Math Galaxy 🧠</h1>
 
 <div class="grid">
 
@@ -44,12 +44,12 @@ SyntheraFlow
 <button class="lesson" onclick="openStudy(1)">Study Lesson</button>
 </div>
 
-<div class="card" id="card2">
+<div class="card locked" id="card2">
 <h3>📐 Geometry</h3>
 <button class="lesson" onclick="openStudy(2)">Study Lesson</button>
 </div>
 
-<div class="card" id="card3">
+<div class="card locked" id="card3">
 <h3>📊 Algebra</h3>
 <button class="lesson" onclick="openStudy(3)">Study Lesson</button>
 </div>
@@ -74,8 +74,6 @@ SyntheraFlow
 <h1>🎉 Math Master!</h1>
 <p>You completed Math Galaxy.</p>
 </div>
-
-
 
 </body>
 </html>

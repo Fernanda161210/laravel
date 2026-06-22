@@ -1,4 +1,5 @@
 let current = 1;
+let unlocked = 1;
 
 const lessons = {
 1:{
@@ -19,29 +20,36 @@ text:"Algebra is a part of mathematics that uses letters and symbols to represen
 
 const quizzes = {
 1:[
-["2+2?","4","5","a"],
-["5-3?","2","1","a"],
-["3x3?","9","6","a"],
-["10/2?","5","4","a"],
-["1+1?","2","3","a"]
+["What is 2 + 2 in arithmetic and why is it used in everyday calculations like counting objects or money?","4","5","a"],
+["If you subtract 5 - 3, what is the correct result and how does subtraction represent removing values?","2","1","a"],
+["What is the result of multiplying 3 × 3 and how does multiplication relate to repeated addition?","9","6","a"],
+["What is 10 divided by 2 and how does division help split quantities equally in real life situations?","5","4","a"],
+["What is 1 + 1 and why is addition considered the most basic arithmetic operation used in daily life?","2","3","a"]
 ],
+
 2:[
-["Triangle sides?","3","4","a"],
-["Square sides?","4","5","a"],
-["Circle has?","No corners","Corners","a"],
-["Angle unit?","Degrees","Liters","a"],
-["Geometry studies?","Shapes","Cars","a"]
+["A triangle has how many sides and why is this shape important in geometry and structures like bridges?","3","4","a"],
+["A square has how many equal sides and how does this shape appear in architecture and design?","4","5","a"],
+["What does a circle represent in geometry and why does it have no corners or edges?","No corners","Corners","a"],
+["What unit is used to measure angles and why is angle measurement important in construction and design?","Degrees","Liters","a"],
+["What does geometry study and how does it help us understand shapes in the real world?","Shapes","Cars","a"]
 ],
+
 3:[
-["x+2=5","3","2","a"],
-["Algebra uses?","Letters","Numbers only","a"],
-["2x=10","5","10","a"],
-["Solve?","Unknowns","Food","a"],
-["Symbol?","x","#","a"]
+["In the equation x + 2 = 5, what is the value of x and how do we solve unknown variables in algebra?","3","2","a"],
+["Why does algebra use letters like x instead of only numbers and how does it help solve problems?","Letters","Numbers only","a"],
+["Solve 2x = 10 and explain how algebra helps find unknown values step by step.","5","10","a"],
+["What does solving an equation mean in algebra and why is it useful in science and programming?","Unknowns","Food","a"],
+["Why is the symbol x commonly used in algebra and what does it represent in equations?","x","#","a"]
 ]
 };
 
 function openStudy(id){
+
+if(id > unlocked){
+return;
+}
+
 current = id;
 
 document.getElementById("studyTitle").innerText = lessons[id].title;
@@ -50,8 +58,6 @@ document.getElementById("studyText").innerText = lessons[id].text;
 document.getElementById("studyPage").style.display = "block";
 document.getElementById("quiz").style.display = "none";
 document.getElementById("finalScreen").style.display = "none";
-
-document.getElementById("studyPage").scrollIntoView({behavior:"smooth"});
 }
 
 function startQuiz(){
@@ -93,17 +99,28 @@ if(score >= 4){
 
 result.innerHTML = "✅ Passed! " + score + "/" + total;
 
-let next = document.getElementById("card"+(current+1));
-
 setTimeout(()=>{
+
 document.getElementById("quiz").style.display = "none";
 result.innerHTML = "";
 
-if(next){
-next.classList.add("active");
-}else{
-document.getElementById("finalScreen").style.display = "block";
+if(current === unlocked && current < 3){
+
+let nextCard = document.getElementById("card" + (unlocked + 1));
+
+unlocked = unlocked + 1;
+
+if(nextCard){
+nextCard.classList.remove("locked");
+nextCard.classList.add("active");
 }
+
+}else if(current === 3){
+
+document.getElementById("finalScreen").style.display = "block";
+
+}
+
 },1200);
 
 }else{

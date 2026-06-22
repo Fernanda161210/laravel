@@ -18,25 +18,20 @@
 
 <div class="logo">SyntheraFlow</div>
 
-
-
 <nav>
     <a href="{{ route('site.index') }}">Home</a>
     <a href="{{ route('site.profile') }}">Profile</a>
     <a href="{{ route('site.worlds') }}">Worlds</a>
     <a href="{{ route('site.lumi') }}">Lumi</a>
-
 </nav>
-
-
 
 </header>
 
 <div class="avatar">
 @if(session('avatar'))
-<img src="{{ asset('avatars/' . session('avatar')) }}">
+    <img src="{{ asset('avatars/' . session('avatar')) }}">
 @else
-<img src="https://via.placeholder.com/180">
+    <img src="https://via.placeholder.com/180">
 @endif
 </div>
 
@@ -44,13 +39,15 @@
 {{ session('usuario_nome', 'User') }}
 </div>
 
-<div class="bio">
-{{ session('descricao', 'Level 18 Explorer • Synthera Elite Student 🚀') }}
+<div class="level">
+🚀 Level {{ session('nivel', 1) }} • Status: Beginner
 </div>
 
-<div class="level">
-🚀 Level 1 • Status: Beginner
+@if(session('descricao'))
+<div class="bio">
+    {{ session('descricao') }}
 </div>
+@endif
 
 <div class="buttons">
 
@@ -70,17 +67,22 @@ Logout
 
 <section class="game-section">
 <h2>🎮 Player Progress</h2>
+
 <div class="game-card">
+
 <div class="progress-info">
-<span>Level 1 • Beginner</span>
-<span>120 XP / 1000 XP</span>
+<span>Level {{ session('nivel', 1) }} • Beginner</span>
+<span>{{ session('xp', 0) }} XP</span>
 </div>
+
 <div class="progress-bar">
 <div class="progress-fill"></div>
 </div>
+
 <p class="progress-text">
 You have just started your journey in SyntheraFlow. Keep studying to unlock new missions.
 </p>
+
 </div>
 </section>
 
@@ -92,7 +94,7 @@ You have just started your journey in SyntheraFlow. Keep studying to unlock new 
 
 <input type="file" name="avatar">
 
-<input type="text" name="nome" value="{{ session('nome') }}" placeholder="Your name">
+<input type="text" name="nome" value="{{ session('usuario_nome') }}" placeholder="Your name">
 
 <textarea name="descricao" placeholder="Write your description...">{{ session('descricao') }}</textarea>
 
@@ -128,11 +130,13 @@ You have just started your journey in SyntheraFlow. Keep studying to unlock new 
 
 <section class="achievements">
 <h2>🏆 Achievements</h2>
+
 <div class="achievement-grid">
 <div class="achievement-card-old">🏅 First Login</div>
 <div class="achievement-card-old">📚 First Quiz</div>
 <div class="achievement-card-old">🔒 Locked</div>
 </div>
+
 </section>
 
 <section class="worlds-section">

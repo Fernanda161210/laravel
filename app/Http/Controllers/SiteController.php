@@ -59,20 +59,30 @@ class SiteController extends Controller
 
     public function updateProfile(Request $request)
     {
-        if ($request->hasFile('avatar')) {
+        if (!session()->has('usuario_id')) {
+            return redirect()->route('site.login');
+        }
 
+        $usuario = Usuario::find(session('usuario_id'));
+
+        if (!$usuario) {
+            return redirect()->route('site.login');
+        }
+
+        if ($request->hasFile('avatar')) {
             $arquivo = $request->file('avatar');
             $nomeArquivo = time() . '.' . $arquivo->getClientOriginalExtension();
             $arquivo->move(public_path('avatars'), $nomeArquivo);
-
-            session(['avatar' => $nomeArquivo]);
+            $usuario->avatar = $nomeArquivo;
         }
 
+        $usuario->nome = $request->nome;
+        $usuario->descricao = $request->descricao;
+
+        $usuario->save();
+
         session([
-            'nome' => $request->nome,
-            'nivel' => $request->nivel,
-            'xp' => $request->xp,
-            'descricao' => $request->descricao
+            'usuario_nome' => $usuario->nome
         ]);
 
         return redirect()->back()->with('success', 'Perfil atualizado com sucesso!');
@@ -92,8 +102,7 @@ class SiteController extends Controller
 
         session([
             'usuario_id' => $usuario->id,
-            'usuario_nome' => $usuario->nome,
-            'nivel' => 1
+            'usuario_nome' => $usuario->nome
         ]);
 
         return redirect()->route('site.profile');
@@ -113,8 +122,7 @@ class SiteController extends Controller
 
         session([
             'usuario_id' => $usuario->id,
-            'usuario_nome' => $usuario->nome,
-            'nivel' => 1
+            'usuario_nome' => $usuario->nome
         ]);
 
         return redirect()->route('site.profile');

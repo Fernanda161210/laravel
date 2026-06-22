@@ -18,7 +18,7 @@ class Usuario extends Model
         'nivel',
         'xp',
         'avatar',
-        'bio'
+        'descricao'
     ];
 
     protected $hidden = [
