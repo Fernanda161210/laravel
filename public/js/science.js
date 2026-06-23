@@ -19,25 +19,27 @@ text:"Chemical reactions happen when substances transform into new substances. T
 
 const quizzes = {
 1:[
-["Gravity does what?","Pulls objects","Pushes objects","a"],
-["Stars produce...","Light","Dark","a"],
-["Galaxy contains...","Stars","Cars","a"],
-["Black holes are...","Strong gravity","Empty space","a"],
-["Orbit depends on...","Gravity","Wind","a"]
+["Why do planets stay in orbit around stars?","Gravity keeps them in orbit","Magnetic fields only","a"],
+["What is a black hole best described as?","A region with extremely strong gravity","A bright star","a"],
+["What mainly makes up a galaxy?","Stars, gas and dust","Only planets","a"],
+["Why don’t planets drift away into space?","Gravitational force","Solar wind only","a"],
+["What does space physics primarily study?","The universe beyond Earth","Only Earth weather","a"]
 ],
+
 2:[
-["Atom contains...","Particles","Cells","a"],
-["Proton is...","Positive","Negative","a"],
-["Electron is...","Negative","Positive","a"],
-["Nucleus has...","Protons","Air","a"],
-["Atoms form...","Molecules","Stars","a"]
+["What defines a proton in an atom?","Positive charge particle","Neutral particle","a"],
+["Where is most of an atom’s mass located?","In the nucleus","In electrons","a"],
+["What keeps electrons near the nucleus?","Electromagnetic force","Gravity only","a"],
+["Why are atoms electrically neutral overall?","Equal protons and electrons","No particles inside","a"],
+["What do atoms combine to form?","Molecules","Stars","a"]
 ],
+
 3:[
-["Reaction creates...","New substance","Same substance","a"],
-["Burning is...","Reaction","Freeze","a"],
-["Rust is caused by...","Oxygen","Fire","a"],
-["Cooking changes...","Structure","Color only","a"],
-["Reactions are important for...","Life","Rocks","a"]
+["What must happen for a chemical reaction to occur?","Atoms rearrange","Atoms disappear","a"],
+["What is rusting an example of?","Chemical reaction with oxygen","Physical breaking","a"],
+["Why is burning considered a chemical reaction?","New substances are formed","Only shape changes","a"],
+["What changes during a chemical reaction?","Chemical bonds","Mass completely disappears","a"],
+["Why are chemical reactions important?","They sustain life processes","They stop time","a"]
 ]
 };
 
@@ -51,7 +53,6 @@ document.getElementById("studyPage").style.display="block";
 document.getElementById("quiz").style.display="none";
 document.getElementById("finalScreen").style.display="none";
 
-// scroll automático
 document.getElementById("studyPage").scrollIntoView({behavior:"smooth"});
 }
 
@@ -64,6 +65,7 @@ loadQuiz(current);
 function loadQuiz(id){
 let form=document.getElementById("quizForm");
 form.innerHTML="";
+
 quizzes[id].forEach((q,i)=>{
 form.innerHTML+=`
 <div class="question">
@@ -108,7 +110,6 @@ document.getElementById("finalScreen").style.display="block";
 result.innerHTML="❌ Failed! Score: "+score+"/"+total+
 "<br><button onclick='retry()'>Try Again</button>";
 }
-
 }
 
 function retry(){

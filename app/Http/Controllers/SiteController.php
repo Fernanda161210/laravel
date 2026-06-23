@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 
 class SiteController extends Controller
 {
+   
+
     public function index()
     {
         return view('site.index');
@@ -48,14 +50,19 @@ class SiteController extends Controller
         return view('site.worlds.science');
     }
 
+    
     public function profile()
     {
         if (!session()->has('usuario_id')) {
             return redirect()->route('site.login');
         }
 
-        return view('site.profile');
+        $usuario = Usuario::find(session('usuario_id'));
+
+        return view('site.profile', compact('usuario'));
     }
+
+ 
 
     public function updateProfile(Request $request)
     {
@@ -69,11 +76,22 @@ class SiteController extends Controller
             return redirect()->route('site.login');
         }
 
+        $request->validate([
+            'avatar' => 'nullable|image|mimes:jpg,jpeg,png,webp,gif|max:2048'
+        ]);
+
         if ($request->hasFile('avatar')) {
-            $arquivo = $request->file('avatar');
-            $nomeArquivo = time() . '.' . $arquivo->getClientOriginalExtension();
-            $arquivo->move(public_path('avatars'), $nomeArquivo);
-            $usuario->avatar = $nomeArquivo;
+
+            if (!file_exists(public_path('avatars'))) {
+                mkdir(public_path('avatars'), 0777, true);
+            }
+
+            $file = $request->file('avatar');
+            $name = time() . '.' . $file->getClientOriginalExtension();
+
+            $file->move(public_path('avatars'), $name);
+
+            $usuario->avatar = $name;
         }
 
         $usuario->nome = $request->nome;
@@ -81,15 +99,14 @@ class SiteController extends Controller
 
         $usuario->save();
 
-        session([
-            'usuario_nome' => $usuario->nome
-        ]);
-
         return redirect()->back()->with('success', 'Perfil atualizado com sucesso!');
     }
 
+
+
     public function salvarCadastro(Request $request)
     {
+     
         if (Usuario::where('email', $request->email)->exists()) {
             return redirect()->back()->with('erro', 'Este email já está cadastrado.');
         }
@@ -97,41 +114,43 @@ class SiteController extends Controller
         $usuario = Usuario::create([
             'nome' => $request->nome,
             'email' => $request->email,
-            'senha' => Hash::make($request->senha)
+            'senha' => Hash::make($request->senha),
         ]);
 
         session([
             'usuario_id' => $usuario->id,
-            'usuario_nome' => $usuario->nome
+            'usuario_nome' => $usuario->nome,
         ]);
 
         return redirect()->route('site.profile');
     }
+
+
 
     public function fazerLogin(Request $request)
     {
         $usuario = Usuario::where('email', $request->email)->first();
 
         if (!$usuario) {
-            return redirect()->back()->with('erro', 'Usuário não encontrado.');
+            return redirect()->back()->with('erro', 'Usuário não encontrado');
         }
 
         if (!Hash::check($request->senha, $usuario->senha)) {
-            return redirect()->back()->with('erro', 'Senha incorreta.');
+            return redirect()->back()->with('erro', 'Senha incorreta');
         }
 
         session([
             'usuario_id' => $usuario->id,
-            'usuario_nome' => $usuario->nome
+            'usuario_nome' => $usuario->nome,
         ]);
 
         return redirect()->route('site.profile');
     }
 
+ 
     public function logout()
     {
         session()->flush();
-
         return redirect()->route('site.login');
     }
 }

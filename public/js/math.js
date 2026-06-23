@@ -20,27 +20,27 @@ text:"Algebra is a part of mathematics that uses letters and symbols to represen
 
 const quizzes = {
 1:[
-["What is 2 + 2 in arithmetic and why is it used in everyday calculations like counting objects or money?","4","5","a"],
-["If you subtract 5 - 3, what is the correct result and how does subtraction represent removing values?","2","1","a"],
-["What is the result of multiplying 3 × 3 and how does multiplication relate to repeated addition?","9","6","a"],
-["What is 10 divided by 2 and how does division help split quantities equally in real life situations?","5","4","a"],
-["What is 1 + 1 and why is addition considered the most basic arithmetic operation used in daily life?","2","3","a"]
+["If you have 12 apples and divide them equally into 3 groups, how many are in each group and what operation is used?","4","6","a"],
+["A store gives 5 dollars off a 15 dollar item. What is the final price and which operation is applied?","10","11","a"],
+["What is 7 × 6 and what does multiplication represent in terms of repeated addition?","42","36","a"],
+["If you subtract 18 - 9, what concept does this represent in real life situations like spending money?","9","8","a"],
+["Which expression correctly represents doubling a number starting from 3 × 2?","6","5","a"]
 ],
 
 2:[
-["A triangle has how many sides and why is this shape important in geometry and structures like bridges?","3","4","a"],
-["A square has how many equal sides and how does this shape appear in architecture and design?","4","5","a"],
-["What does a circle represent in geometry and why does it have no corners or edges?","No corners","Corners","a"],
-["What unit is used to measure angles and why is angle measurement important in construction and design?","Degrees","Liters","a"],
-["What does geometry study and how does it help us understand shapes in the real world?","Shapes","Cars","a"]
+["A triangle always has how many sides and why is it considered a stable structure in engineering?","3","4","a"],
+["Which shape has all sides equal and is commonly used in tiling and design patterns?","Square","Circle","a"],
+["Why does a circle have infinite symmetry and no corners in geometric terms?","No corners","Many corners","a"],
+["What is used to measure angles in geometry and why is it essential in construction?","Degrees","Meters","a"],
+["Which term best describes the study of shapes, space and figures in mathematics?","Geometry","Algebra","a"]
 ],
 
 3:[
-["In the equation x + 2 = 5, what is the value of x and how do we solve unknown variables in algebra?","3","2","a"],
-["Why does algebra use letters like x instead of only numbers and how does it help solve problems?","Letters","Numbers only","a"],
-["Solve 2x = 10 and explain how algebra helps find unknown values step by step.","5","10","a"],
-["What does solving an equation mean in algebra and why is it useful in science and programming?","Unknowns","Food","a"],
-["Why is the symbol x commonly used in algebra and what does it represent in equations?","x","#","a"]
+["Solve x + 7 = 15. What is x and what step is used to isolate the variable?","8","7","a"],
+["In 3x = 12, what does x represent and how do we find it?","4","3","a"],
+["Why are variables used in algebra instead of fixed numbers only?","To represent unknown values","To make math harder","a"],
+["What does solving an equation mainly involve in algebra?","Finding unknown values","Drawing shapes","a"],
+["If x = 5, what is the value of 2x + 3 and what concept does this show?","13","10","a"]
 ]
 };
 

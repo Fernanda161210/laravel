@@ -19,25 +19,27 @@ text:"Ancient history explores the earliest and most influential civilizations i
 
 const quizzes = {
 1:[
-["Knights used...","Swords","Cars","a"],
-["Castles were...","Defense","Ships","a"],
-["Wars happened between...","Kingdoms","Planets","a"],
-["Knights were...","Warriors","Farmers","a"],
-["Main goal of war was...","Land","Music","a"]
+["What best describes medieval knights beyond combat ability?","They followed a code of honor","They were merchants","a"],
+["Why were castles strategically important in medieval warfare?","They controlled trade routes","They provided defense and protection","b"],
+["What role did siege weapons like catapults play?","Long-distance destruction of fortifications","Fishing tools","a"],
+["Why was planning important in medieval battles?","Because wars were only random","Because strategy determined victory","b"],
+["What was a major motivation for medieval wars?","Territorial expansion","Scientific discovery","a"]
 ],
+
 2:[
-["Geography studies...","Land","Space","a"],
-["Rivers help...","Trade","Flying","a"],
-["Mountains help...","Defense","Cooking","a"],
-["Borders separate...","Kingdoms","Songs","a"],
-["Geography includes...","Nature","Games","a"]
+["Why were rivers crucial to medieval kingdoms?","They supported transport and trade","They were used for decoration only","a"],
+["How did mountains influence kingdoms?","They acted as natural defenses","They caused wars directly","a"],
+["What effect did geography have on cities?","It influenced where they were built","It had no effect","a"],
+["Why were forests important strategically?","They provided cover and resources","They were always avoided","a"],
+["What does controlling good land usually lead to?","Greater power and wealth","Less population","a"]
 ],
+
 3:[
-["Ancient history studies...","Civilizations","Robots","a"],
-["Egypt built...","Pyramids","Cars","a"],
-["Rome was a...","Empire","Island","a"],
-["Greece contributed...","Philosophy","Games","a"],
-["Ancient people lived in...","Cities","Space","a"]
+["What was a major contribution of Ancient Greece?","Philosophy and democracy","Industrial machines","a"],
+["Why was Ancient Rome influential?","It developed roads and legal systems","It invented computers","a"],
+["What did Ancient Egypt build that is still famous today?","Pyramids","Skyscrapers","a"],
+["What was a key feature of ancient civilizations?","Development of writing systems","Use of electricity","a"],
+["Why is ancient history important today?","It explains modern societal foundations","It is only mythology","a"]
 ]
 };
 

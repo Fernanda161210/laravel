@@ -27,25 +27,29 @@
 
 </header>
 
+
 <div class="avatar">
-@if(session('avatar'))
-    <img src="{{ asset('avatars/' . session('avatar')) }}">
+
+@if($usuario && $usuario->avatar)
+    <img src="{{ asset('avatars/' . $usuario->avatar) }}">
 @else
     <img src="https://via.placeholder.com/180">
 @endif
+
 </div>
 
+
 <div class="username">
-{{ session('usuario_nome', 'User') }}
+{{ $usuario->nome ?? 'User' }}
 </div>
 
 <div class="level">
-🚀 Level {{ session('nivel', 1) }} • Status: Beginner
+🚀 Level {{ $usuario->nivel ?? 1 }} • Status: Beginner
 </div>
 
-@if(session('descricao'))
+@if($usuario && $usuario->descricao)
 <div class="bio">
-    {{ session('descricao') }}
+    {{ $usuario->descricao }}
 </div>
 @endif
 
@@ -65,14 +69,16 @@ Logout
 
 </div>
 
+
 <section class="game-section">
+
 <h2>🎮 Player Progress</h2>
 
 <div class="game-card">
 
 <div class="progress-info">
-<span>Level {{ session('nivel', 1) }} • Beginner</span>
-<span>{{ session('xp', 0) }} XP</span>
+<span>Level {{ $usuario->nivel ?? 1 }} • Beginner</span>
+<span>{{ $usuario->xp ?? 0 }} XP</span>
 </div>
 
 <div class="progress-bar">
@@ -84,7 +90,9 @@ You have just started your journey in SyntheraFlow. Keep studying to unlock new 
 </p>
 
 </div>
+
 </section>
+
 
 <section id="editProfile">
 
@@ -94,15 +102,16 @@ You have just started your journey in SyntheraFlow. Keep studying to unlock new 
 
 <input type="file" name="avatar">
 
-<input type="text" name="nome" value="{{ session('usuario_nome') }}" placeholder="Your name">
+<input type="text" name="nome" value="{{ $usuario->nome ?? '' }}" placeholder="Your name">
 
-<textarea name="descricao" placeholder="Write your description...">{{ session('descricao') }}</textarea>
+<textarea name="descricao" placeholder="Write your description...">{{ $usuario->descricao ?? '' }}</textarea>
 
 <button type="submit" class="save-btn">Save Changes</button>
 
 </form>
 
 </section>
+
 
 <section class="lumi-section">
 
@@ -128,7 +137,9 @@ You have just started your journey in SyntheraFlow. Keep studying to unlock new 
 
 </section>
 
+
 <section class="achievements">
+
 <h2>🏆 Achievements</h2>
 
 <div class="achievement-grid">
@@ -139,24 +150,25 @@ You have just started your journey in SyntheraFlow. Keep studying to unlock new 
 
 </section>
 
+
 <section class="worlds-section">
 
-<h2> ✰ Recent Adventures</h2>
+<h2>✰ Recent Adventures</h2>
 
 <div class="worlds-grid">
 
 <a href="{{ route('site.worlds.math') }}" class="world-card">
-<h3>✦ ⋆ Mathematics ✦ ⋆ ˚</h3>
+<h3>✦ Mathematics</h3>
 <p>Explore logic, numbers and challenges</p>
 </a>
 
 <a href="{{ route('site.worlds.history') }}" class="world-card">
-<h3>✦ ⋆ History ✦ ⋆ ˚</h3>
+<h3>✦ History</h3>
 <p>Discover past events</p>
 </a>
 
 <a href="{{ route('site.worlds.science') }}" class="world-card">
-<h3>✦ ⋆ Science ✦ ⋆ ˚</h3>
+<h3>✦ Science</h3>
 <p>Experiments and discoveries</p>
 </a>
 
