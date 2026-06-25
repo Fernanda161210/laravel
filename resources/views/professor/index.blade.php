@@ -1,3 +1,6 @@
+
+
+
 <div>
 
     <form action="{{ route('professor.add') }}" method="post">

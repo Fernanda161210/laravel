@@ -1,3 +1,6 @@
+
+
+
 <div>
 
     <form action="{{ route('curso.add') }}" method="post">

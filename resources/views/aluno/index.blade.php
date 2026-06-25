@@ -1,3 +1,6 @@
+
+
+
 <div>
     <form action="{{ route('aluno.add') }}" method="post">
         @csrf

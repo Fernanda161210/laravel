@@ -1,3 +1,5 @@
+
+
 <div>
 
     <form action="{{ route('componente.add') }}" method="post">

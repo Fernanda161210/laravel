@@ -1,3 +1,4 @@
+
 <div>
 
     <form action="{{ route('curso.save') }}" method="post">

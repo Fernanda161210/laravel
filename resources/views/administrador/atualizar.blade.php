@@ -1,120 +1,13 @@
-```html
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body{
-    background:#f4f6f9;
-    padding:40px 20px;
-}
-
-.container{
-    max-width:1000px;
-    margin:auto;
-}
-
-.card{
-    background:#fff;
-    padding:35px;
-    border-radius:15px;
-    box-shadow:0 4px 20px rgba(0,0,0,0.08);
-}
-
-.titulo{
-    font-size:28px;
-    font-weight:600;
-    color:#333;
-    margin-bottom:30px;
-    border-bottom:3px solid #6c63ff;
-    padding-bottom:10px;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
-}
-
-.form-group{
-    display:flex;
-    flex-direction:column;
-}
-
-label{
-    font-size:14px;
-    font-weight:600;
-    color:#444;
-    margin-bottom:8px;
-}
-
-input{
-    width:100%;
-    height:48px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    padding:0 15px;
-    font-size:14px;
-    transition:.3s;
-}
-
-input:focus{
-    outline:none;
-    border-color:#6c63ff;
-    box-shadow:0 0 0 3px rgba(108,99,255,.15);
-}
-
-.btn{
-    border:none;
-    border-radius:8px;
-    padding:14px 24px;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.btn-salvar{
-    background:#6c63ff;
-    color:white;
-    margin-top:25px;
-}
-
-.btn-salvar:hover{
-    background:#564de0;
-}
-
-.success{
-    margin-top:20px;
-    padding:15px;
-    background:#d1fae5;
-    color:#065f46;
-    border-radius:8px;
-    font-weight:500;
-}
-
-@media(max-width:768px){
-
-    body{
-        padding:20px 10px;
-    }
-
-    .card{
-        padding:20px;
-    }
-
-    .titulo{
-        font-size:22px;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-}
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
 
 <div class="container">
 
@@ -181,4 +74,4 @@ input:focus{
     </div>
 
 </div>
-```
+</html>
