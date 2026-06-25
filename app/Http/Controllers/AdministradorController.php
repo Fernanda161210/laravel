@@ -103,8 +103,8 @@ class AdministradorController extends Controller
             [
                 'nome' => 'required|min:3|max:255',
                 'email' => 'required|email|max:255',
-                'telefone' => 'required',
-                'cpf' => 'required',
+                'telefone' => 'required|min:3|max:255',
+                'cpf' => 'required|min:3|max:255',
                 'usuario' => 'required|min:3|max:255',
                 'senha' => 'required|min:3|max:255',
                 'status' => 'required|min:3|max:255',
@@ -118,9 +118,14 @@ class AdministradorController extends Controller
                 'email.email' => 'Informe um email válido.',
                 'email.max' => 'O campo email deve conter no máximo 255 caracteres.',
 
+
                 'telefone.required' => 'O campo telefone é obrigatório.',
+                'telefone.min' => 'O campo telefone deve conter no mínimo 8 caracteres.',
+                'telefone.max' => 'O campo telefone deve conter no máximo 20 caracteres.',
 
                 'cpf.required' => 'O campo CPF é obrigatório.',
+                'cpf.min' => 'O campo cpf deve conter no mínimo 8 caracteres.',
+                'cpf.max' => 'O campo cpf deve conter no máximo 20 caracteres.',
 
                 'usuario.required' => 'O campo usuário é obrigatório.',
                 'usuario.min' => 'O campo usuário deve conter no mínimo 3 caracteres.',

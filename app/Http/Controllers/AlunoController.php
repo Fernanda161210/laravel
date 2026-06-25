@@ -38,7 +38,7 @@ class AlunoController extends Controller
         $aluno = new \App\Models\AlunoModel();
         $aluno::create($dados->all());
 
-        //RECUPERANDO TODOS ALUNOS DO BANCO E ENVIANDO PARA A VIEW
+     
         $alunos = new \App\Models\AlunoModel();
 
         return view('aluno.index', ['success'=>'Cadastrado!', 'alunos'=>$alunos::all()]);
