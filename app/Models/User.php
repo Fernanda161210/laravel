@@ -6,27 +6,35 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
+     * Campos preenchíveis
      */
     protected $fillable = [
-        'name',
+        'nome',
         'email',
         'password',
+        'telefone',
+        'cpf',
+
+        'cep',
+        'logradouro',
+        'numero',
+        'complemento',
+        'bairro',
+        'cidade',
+        'estado',
+
+        'tipo',
+        'ativo',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
+     * Campos ocultos
      */
     protected $hidden = [
         'password',
@@ -34,11 +42,48 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
+     * Conversão de tipos
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+            'ativo' => 'boolean',
+        ];
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relacionamentos
+    |--------------------------------------------------------------------------
+    */
+
+    // Um usuário pode possuir vários pedidos
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class, 'cliente_id');
+    }
+
+    // Um usuário pode possuir vários itens no carrinho
+    public function carrinho()
+    {
+        return $this->hasMany(Carrinho::class, 'cliente_id');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Métodos auxiliares
+    |--------------------------------------------------------------------------
+    */
+
+    public function isAdmin()
+    {
+        return $this->tipo === 'admin';
+    }
+
+    public function isCliente()
+    {
+        return $this->tipo === 'cliente';
+    }
 }
