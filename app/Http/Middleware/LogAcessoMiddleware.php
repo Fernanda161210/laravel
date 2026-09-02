@@ -17,6 +17,7 @@ class LogAcessoMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         // return $next($request);
+        //quando a pessoa for acessar uma rota ele vai pegar o IP e armazenar no bd 
 
         $ip = $request->server->get('REMOTE_ADDR');
         $rota = $request->getRequestUri();
